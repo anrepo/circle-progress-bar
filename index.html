@@ -5,42 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Круговой прогресс бар (Circle Progress Bar)</title>
-    <style>
-        .progress-circle {
-            position: relative;
-            display: inline-block;
-        }
-
-        .skill-circle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1rem;
-            text-align: center;
-            border-radius: 50%;
-        }
-
-        svg.progress-bar {
-            vertical-align: middle;
-            border: 1px solid black;
-        }
-
-        circle.progress {
-            /* цвет фона и границы; ширина границы */
-            fill: transparent;
-            stroke: #00bdbd;
-            stroke-width: 10px;
-            /* скругление углов линии границы */
-            stroke-linecap: round;
-            /* поворот для смещения отсчёта с верхней точки круга */
-            transform: rotate(-90deg);
-            /* выравнивание круга по центру */
-            transform-origin: center;
-            /* плавность заполнения */
-            transition: stroke-dashoffset 0.3s linear;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="progress-wrap">
@@ -51,20 +16,6 @@
             </svg>
         </div>
     </div>
-    <script>
-        const circle = document.querySelector('.progress-circle .progress');
-        const radius = circle.r.baseVal.value;      // радиус
-        const circumference = 2 * Math.PI * radius; // длина окружности
-
-        circle.style.strokeDasharray = `${circumference} ${circumference}`;
-        circle.style.strokeDashoffset = circumference;
-
-        function setProgress(percent) {
-            const offset = circumference - percent / 100 * circumference;
-            circle.style.strokeDashoffset = offset;
-        }
-
-        setProgress(87);    // set deafult values
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
